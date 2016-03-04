@@ -353,7 +353,7 @@ var commands = {
     //                 //bot.sendMessage(msg.channel,JSON.stringify(snapshot));
     //                 bot.sendMessage(msg.channel,snapshot.name
     //                     + "\nprice: $" + snapshot.lastTradePriceOnly);
-    //             }  
+    //             }
     //         });
     //     }
     // },
@@ -458,7 +458,7 @@ var commands = {
         process: function(bot,msg,suffix) {
             if (suffix.split("d").length <= 1) {
                 bot.sendMessage(msg.channel,msg.author + " rolled a " + d20.roll(suffix || "10"));
-            }  
+            }
             else if (suffix.split("d").length > 1) {
                 var eachDie = suffix.split("+");
                 var passing = 0;
@@ -546,6 +546,36 @@ var commands = {
         process: function(bot,msg,suffix) {
             var message = 'Highfive back!';
             bot.sendMessage(msg.channel, message);
+        }
+    },
+	"fistbump" : {
+        usage: "",
+        description: "Returns fistbump like a baymax",
+        process: function(bot,msg,suffix) {
+            var message = '*fistbump* Bah-a-la-la-la';
+			var img = 'http://i.imgur.com/9zHaJOq.jpg';
+            bot.sendMessage(msg.channel, message);
+			bot.sendMessage(msg.channel, img);
+        }
+    },
+	"balladofserenityvalley" : {
+        usage: "",
+        description: "returns song of firefly",
+        process: function(bot,msg,suffix) {
+            var youtube = 'https://www.youtube.com/watch?v=7DiWxcilWtU';
+			var message = "Take my love.\nTake my land.\nTake me where I cannot stand.\nI don't care,\nI'm still free.\nYou can't take the sky from me.\n\nTake me out to the black.\nTell em I ain't comin' back.\nBurn the land\nAnd boil the sea.\nYou can't take the sky from me.\n\nThere's no place I can't be\nSince I found Serenity.\nBut you can't take the sky from me." ;
+            bot.sendMessage(msg.channel, youtube);
+			bot.sendMessage(msg.channel, message);
+        }
+    },
+	"defineinteresting" : {
+        usage: "",
+        description: "returns video of firefly",
+        process: function(bot,msg,suffix) {
+            var youtube = 'https://www.youtube.com/watch?v=PBEUQSpRvSI';
+			var message = "Oh God,  Oh God,  we're all going to die.";
+            bot.sendMessage(msg.channel, youtube);
+			bot.sendMessage(msg.channel, message);
         }
     },
     "about" : {
@@ -669,7 +699,7 @@ bot.on("disconnected", function () {
 
 	console.log("Disconnected!");
 	process.exit(1); //exit node.js with an error
-	
+
 });
 
 bot.on("message", function (msg) {
@@ -730,13 +760,13 @@ bot.on("message", function (msg) {
         if(msg.author == bot.user){
             return;
         }
-        
+
         if (msg.author != bot.user && msg.isMentioned(bot.user)) {
                 bot.sendMessage(msg.channel,msg.author + ", you called?");
         }
     }
 });
- 
+
 
 //Log user status changes
 bot.on("presence", function(user,status,gameId) {
